@@ -1,8 +1,11 @@
+<center>
+<fieldset>
+        <legend><center><i class="icon-user"></i>Add music</center></legend>
+
 <%= form_for(@mp3) do |f| %>
   <% if @mp3.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@mp3.errors.count, "error") %> prohibited this mp3 from being saved:</h2>
-
       <ul>
       <% @mp3.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,12 +13,19 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.file_field :title %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table>
+    <tr>
+      <td><%= f.label :title %></td>
+      <td><%= f.file_field :title %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit :submit, :class => "btn btn-medium"%></td>
+    </tr>
+  </table>
+ 
 <% end %>
+
+</fieldset>
+</center>
+

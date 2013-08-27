@@ -1,9 +1,11 @@
 <h1>Listing mp3s</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Title</th>
+      <th>Cover</th>
+      <th>Title</th> 
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,10 +16,15 @@
     <% @mp3s.each do |mp3| %>
       <tr>
         <td> <img src="s1.jpg" alt="s1.jpg" height="42" width="42" /> </td>
-        <td><%= mp3.title %></td> 
-        <td><%= link_to 'Show', mp3 %></td>
-        <td><%= link_to 'Edit', edit_mp3_path(mp3) %></td>
-        <td><%= link_to 'Delete', mp3, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= mp3.title %></td>  
+        <td><%= link_to 'Show', mp3, :class => "btn btn-info btn-small ",:style => "color:white" %></td>
+        <td><%= link_to 'Edit', edit_mp3_path(mp3) ,:class => "btn btn-warning btn-small ",:style => "color:white"%></td>
+        <td><%= link_to 'Delete', mp3, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-danger btn-small ",:style => "color:white"%></td>
+        <td>
+          <audio controls>
+            <source src="assets/<%= mp3.title %>" type="audio/mp3">
+          </audio>
+        </td
       </tr>
     <% end %>
   </tbody>
@@ -25,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Mp3', new_mp3_path %>
+<%= link_to 'New Mp3', new_mp3_path , :class => "btn btn-primary white  btn-large ",:style => "color:white"%>

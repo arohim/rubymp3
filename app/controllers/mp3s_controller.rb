@@ -1,3 +1,4 @@
+
 class Mp3sController < ApplicationController
   before_action :set_mp3, only: [:show, :edit, :update, :destroy]
 
@@ -24,10 +25,13 @@ class Mp3sController < ApplicationController
   # POST /mp3s
   # POST /mp3s.json
   def create
+
+
     @mp3 = Mp3.new(mp3_params)
 
     uploaded_io = params[:mp3][:title]
 
+ 
  
     @mp3[:title] = uploaded_io.original_filename
     respond_to do |format|
@@ -44,11 +48,11 @@ class Mp3sController < ApplicationController
       #  path = File.join(directory, name)
         # write the file
       #  File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
-      #end
+      #
+ 
 
 
-
-        format.html { redirect_to @mp3, notice: 'Mp3 was successfully created.' }
+        format.html { redirect_to @mp3, notice: 'Mp3 was successfully created. '}
         format.json { render action: 'show', status: :created, location: @mp3 }
       else
         format.html { render action: 'new' }
@@ -60,8 +64,11 @@ class Mp3sController < ApplicationController
   # PATCH/PUT /mp3s/1
   # PATCH/PUT /mp3s/1.json
   def update
+    uploaded_io = mp3_params[:mp3][:title]
+    @mp3temp[:title] = uploaded_io.original_filename
+
     respond_to do |format|
-      if @mp3.update(mp3_params)
+      if @mp3.update(@mp3temp)
         format.html { redirect_to @mp3, notice: 'Mp3 was successfully updated.' }
         format.json { head :no_content }
       else
