@@ -26,8 +26,18 @@ class Mp3sController < ApplicationController
   def create
     @mp3 = Mp3.new(mp3_params)
 
+    uploaded_io = params[:mp3][:title]
+
+ 
+    @mp3[:title] = uploaded_io.original_filename
     respond_to do |format|
       if @mp3.save
+
+        
+        File.open(Rails.root.join('app/assets', 'music', uploaded_io.original_filename), 'w') do 
+          |file| file.write(uploaded_io.read)
+        end
+
         format.html { redirect_to @mp3, notice: 'Mp3 was successfully created.' }
         format.json { render action: 'show', status: :created, location: @mp3 }
       else
