@@ -34,9 +34,19 @@ class Mp3sController < ApplicationController
       if @mp3.save
 
         
-        File.open(Rails.root.join('app/assets', 'music', uploaded_io.original_filename), 'w') do 
-          |file| file.write(uploaded_io.read)
+        File.open(Rails.root.join('app/assets', 'music', uploaded_io.original_filename), 'wb') do 
+         |file| file.write(uploaded_io.read)
         end
+
+      #name =  uploaded_io.original_filename
+       # directory = "app/assets/music"
+        # create the file path
+      #  path = File.join(directory, name)
+        # write the file
+      #  File.open(path, "wb") { |f| f.write(upload['datafile'].read) }
+      #end
+
+
 
         format.html { redirect_to @mp3, notice: 'Mp3 was successfully created.' }
         format.json { render action: 'show', status: :created, location: @mp3 }
