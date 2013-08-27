@@ -1,0 +1,39 @@
+<h1>Listing backends</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Artist</th>
+      <th>Album</th>
+      <th>Cover</th>
+      <th>Mp3file</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @backends.each do |backend| %>
+      <tr>
+        <td><%= backend.title %></td>
+        <td><%= backend.artist %></td>
+        <td><%= backend.album %></td>
+        <td><%= backend.cover %></td>
+        <td> 
+          <audio controls>
+            <source src="assets/<%= backend.mp3file %>" type="audio/mp3">
+          </audio>
+        </td>
+        <td><%= link_to 'Show', backend , :class => "btn btn-info btn-small ",:style => "color:white" %></td>
+        <td><%= link_to 'Edit', edit_backend_path(backend) ,:class => "btn btn-warning btn-small ",:style => "color:white" %></td>
+        <td><%= link_to 'Destroy', backend, method: :delete, data: { confirm: 'Are you sure?' } ,:class => "btn btn-danger btn-small ",:style => "color:white"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Backend', new_backend_path , :class => "btn btn-primary btn-large ",:style => "color:white"%>

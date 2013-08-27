@@ -1,0 +1,37 @@
+<h1>Listing playlists</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cover</th>
+      <th>Title</th> 
+      <th>status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+ 
+
+    <% 
+    i = 0
+    @playlists.each do |mp3| 
+      
+    @icon_status = "icon-white"
+    if i % 2 == 0
+      @icon_status = "icon-black"
+
+    end
+    i = i+1
+      %>
+      <tr>
+        <td> <img src="s1.jpg" alt="s1.jpg" height="30" width="30" /> </td>
+        <td><%= mp3.title %></td>  
+        <td > 
+          <a href="#" class="icon-volume-up <%=@icon_status%>" onhover=""></a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+ 

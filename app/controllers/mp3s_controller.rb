@@ -22,6 +22,10 @@ class Mp3sController < ApplicationController
   def edit
   end
 
+  def playlist
+
+  end
+
   # POST /mp3s
   # POST /mp3s.json
   def create
